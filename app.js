@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const http =require('http');
 const bodyParser=require('body-parser');
+const errors =require('./controllers/NotFound');
 const app = express();
 
 const contactUs=require('./routes/contactUs');
@@ -15,8 +16,6 @@ app.use('/admin',adminRoutes);
 app.use('/shop',shopRoutes);
 
 
-app.use((req,res)=>{
-    res.sendFile(path.join(__dirname,'./','views','404.html'));
-})
+app.use(errors.Error);
 
 app.listen(3000);

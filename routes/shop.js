@@ -1,11 +1,9 @@
-const path = require('path')
 const express = require('express');
-const rootDir=require('../util/path');
 const route = express.Router();
+const shop = require('../controllers/products')
 
-route.get('/',(req, res, next)=>{
-    console.log("main page");
-    res.sendFile(path.join(rootDir,'views','shop.html'));
-});
+
+route.get('/',shop.shop);
+
 
 module.exports=route;
